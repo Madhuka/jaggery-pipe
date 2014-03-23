@@ -15,11 +15,11 @@ var compileResources={};
         var out;
 
         var log = new Log();
-        log.info('Compiling resources');
+        log.debug('Compiling resources');
 
         //Go through each property in the contexts object
         for (var area in contexts) {
-            log.info('Gathering resources for area: ' + area);
+            log.debug('Gathering resources for area: ' + area);
 
             if (contexts.hasOwnProperty(area)) {
                 blocks = contexts[area];
@@ -29,11 +29,11 @@ var compileResources={};
 
                     //Go through each block
                     for (var index = 0; index < blocks.length; index++) {
-                        log.info('Invoking helper for block: ' + blocks[index].partial);
+                        log.debug('Invoking helper for block: ' + blocks[index].partial);
                         block = blocks[index].partial || '';
                         helper = getHelper(blocks[index].partial);
                         out = helper.resources(page, meta);
-                        log.info(stringify(out));
+                        log.debug(stringify(out));
                         meta.js = out.js || [];
                         meta.css = out.css || [];
                         //To do: Add support for code

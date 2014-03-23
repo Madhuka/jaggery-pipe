@@ -44,7 +44,7 @@ var challengeAuth=function(req,res){
 
 var handle = function (req, res, session, handlers) {
     var log = new Log();
-    log.info('Basic authentication handler called!');
+    log.debug('Basic authentication handler called!');
 
     //Check the session to see if the user has been logged
     if(isLoggedIn(session)){
@@ -63,11 +63,11 @@ var handle = function (req, res, session, handlers) {
             var isAuthenticated=authenticator(session,credentials);
 
             if(!isAuthenticated){
-                log.info('Authentication failed');
+                log.debug('Authentication failed');
                 challengeAuth(req,res);
             }
             else{
-                log.info('Authentication successfull');
+                log.debug('Authentication successfull');
                 //Invoke the other plugins
                 handlers();
             }

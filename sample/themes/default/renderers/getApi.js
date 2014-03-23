@@ -1,6 +1,6 @@
 var render=function(theme,data){
     var log=new Log();
-    log.info('getAPi called');
+    log.debug('getAPi called');
 
     theme('index',{
        body:[

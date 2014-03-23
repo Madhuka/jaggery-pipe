@@ -47,7 +47,7 @@ datastructures.array={};
     reflection.printProps = function (obj) {
         for (var key in obj) {
             if (obj.hasOwnProperty(key)) {
-                log.info('key: ' + key);
+                log.debug('key: ' + key);
             }
         }
     };
@@ -85,7 +85,7 @@ datastructures.array={};
 
         for (var index in files) {
             if (files[index].getName() == fileName) {
-                log.info('File: '+fileName+' found.');
+                log.debug('File: '+fileName+' found.');
                 return files[index];
             }
         }

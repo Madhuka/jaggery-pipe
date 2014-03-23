@@ -50,8 +50,8 @@ var compileOutput={};
         var pagePath=getPagePath(page);
         var pageContent=getPageContent(pagePath);
 
-        log.info('Meta: ');
-        log.info(stringify(caramel.meta().js));
+        log.debug('Meta: ');
+        log.debug(stringify(caramel.meta().js));
 
         var compiledPage=Handlebars.compile(pageContent);
         print(compiledPage(contexts));

@@ -17,10 +17,10 @@ var defaultRenderer=function(viewId,data,req,res,session){
 
         //Do nothing if the user has only given an id
         if(arguments[0] instanceof String){
-            log.info('Please provide a data object to render');
+            log.debug('Please provide a data object to render');
             return;
         }
-        log.info('Only data has been provided');
+        log.debug('Only data has been provided');
         data=arguments[0];
     }
 
@@ -36,7 +36,7 @@ var handle = function (req, res, session, handlers) {
     var result= app.route(req, res, session);
 
     if (result.hasOwnProperty('error')) {
-        log.info('Route not handled');
+        log.debug('Route not handled');
         handlers({code: result.error,msg:result.msg});
     }
 
@@ -92,7 +92,7 @@ var exec = (function (RouteMap) {
             return { error: 404 , msg:'No routes for the method type', data:{}};
         }
 
-        log.info(routes[method].map);
+        log.debug(routes[method].map);
         var match=routes[method].match(req.getRequestURI());
 
         if((!match)||(!match.ref)){

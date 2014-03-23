@@ -102,7 +102,7 @@ var helpers = function (Handlebars) {
 
     var js = function () {
         var log=new Log();
-        log.info('JS Helper called');
+        log.debug('JS Helper called');
         var i, url, length,
             html = '',
             theme = caramel.theme(),
@@ -118,8 +118,8 @@ var helpers = function (Handlebars) {
         url = theme.url;
         for (i = 0; i < length; i++) {
             //remove \n when production = true
-            //log.info(url('a'));
-            //log.info(url.call(Handlebars._getPublicDir(js[i])));
+            //log.debug(url('a'));
+            //log.debug(url.call(Handlebars._getPublicDir(js[i])));
             html += '\n' + renderJS(url.call(theme, Handlebars._getPublicDir()+'js/' + js[i]));
         }
         return new Handlebars.SafeString(html);

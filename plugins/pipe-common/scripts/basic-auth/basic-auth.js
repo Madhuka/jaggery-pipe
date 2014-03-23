@@ -59,13 +59,13 @@ var basicAuth=(function(){
             return;
         }
 
-        log.info('Basic Authentication plug-in does not have '+key+'.');
+        log.debug('Basic Authentication plug-in does not have '+key+'.');
 
     };
 
     var handle = function (req, res, session, handlers) {
         var log = new Log();
-        log.info('Basic authentication handler called!');
+        log.debug('Basic authentication handler called!');
 
         //Check the session to see if the user has been logged
         if(logic.isLoggedIn(session)){
@@ -85,11 +85,11 @@ var basicAuth=(function(){
 
                 //If authentication fails, the user should be challeneged again
                 if(!isAuthenticated){
-                    log.info('Authentication failed');
+                    log.debug('Authentication failed');
                     logic.challengeAuth(req,res);
                 }
                 else{
-                    log.info('Authentication successfull');
+                    log.debug('Authentication successfull');
                     //Invoke the other plugins
                     handlers();
                 }

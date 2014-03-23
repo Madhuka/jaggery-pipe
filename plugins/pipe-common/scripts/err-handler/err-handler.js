@@ -7,7 +7,7 @@ var errHandler=(function(){
 
     var handle=function(err,req,res,session,handlers){
         var log=new Log();
-        log.info('Entered error handler '+environment);
+        log.debug('Entered error handler '+environment);
 
         if(environment==DEV){
             res.sendError(err.code?err.code:500,err.msg?err.msg:err.toString());

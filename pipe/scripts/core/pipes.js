@@ -78,14 +78,14 @@ var final;
     var resolveSource = function (src) {
         var log=new Log();
         if (src instanceof Function) {
-            log.info('Is a function');
+            log.debug('Is a function');
             return src;
         }
         else if (src instanceof Object) {
             if (!src[PARAM_HANDLER_FUNCTION]) {
                 throw "The plugin has no handle method";
             }
-            log.info('Is an object');
+            log.debug('Is an object');
             return src.handle;
         }
         else {
@@ -131,9 +131,9 @@ var final;
         //Remove the context
         var uri = req.getRequestURI().replace(context, '');
 
-        log.info(uri.indexOf(route));
+        log.debug(uri.indexOf(route));
         if (uri.indexOf(route) != -1) {
-            log.info('The route matches');
+            log.debug('The route matches');
             return true;
         }
 
@@ -148,7 +148,7 @@ var final;
         var plugin;
         for (var index in plugins) {
             plugin = plugins[index];
-            log.info(stringify(plugin));
+            log.debug(stringify(plugin));
         }
     };
 
@@ -272,7 +272,7 @@ var final;
             return;
         }
 
-        log.info('Unable to override ' + overriddenPluginName + ' as it has not been installed');
+        log.debug('Unable to override ' + overriddenPluginName + ' as it has not been installed');
         return;
     };
 

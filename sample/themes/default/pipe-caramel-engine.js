@@ -84,7 +84,7 @@ var engine = (function () {
     };
 
     var globals = function () {
-        log.info('Globals method called');
+        log.debug('Globals method called');
     };
 
     var getPublicDir = function () {
@@ -112,7 +112,7 @@ var engine = (function () {
      */
     var getPath = function (dir) {
         var path = caramel.theme().resolve(dir);
-        log.info('Path: ' + path);
+        log.debug('Path: ' + path);
         return path;
     };
 
@@ -144,7 +144,7 @@ var engine = (function () {
     var loadHandlebarsHelpers = function (dir, handleBars) {
         var base = getPath(dir);//'/themes/default/' + dir;
         var dir = new File(base);
-        log.info('Registering helpers');
+        log.debug('Registering helpers');
         handleBars._getPublicDir = getPublicDir;
         handleBars._translate = translate;
         recursiveRegister(dir, function (file) {
@@ -152,7 +152,7 @@ var engine = (function () {
             var helper = base + '/' + file.getName();
             var module = require(helper).helpers(handleBars);
             for (var key in module) {
-                log.info('Registering helper: ' + key);
+                log.debug('Registering helper: ' + key);
                 handleBars.registerHelper(key, module[key]);
             }
         });
@@ -167,7 +167,7 @@ var engine = (function () {
         var dir = new File(base);
         recursiveRegister(dir, function (file) {
             file.open('r');
-            log.info('Registering partial file: ' + file.getName());
+            log.debug('Registering partial file: ' + file.getName());
             handleBars.registerPartial(getFileName(file), file.readAll());
             file.close();
         });
@@ -181,7 +181,7 @@ var engine = (function () {
      *             the request object (Refer: caramel.core.js)
      */
     var render = function (data, meta) {
-        log.info('Render method called');
+        log.debug('Render method called');
         var req = meta.request;
         var dir = getPath(RENDERERS_DIR);//'/themes/default/renderers';
         var viewId = data.__viewId || '';
@@ -206,7 +206,7 @@ var engine = (function () {
 
         }
         else {
-            log.info('Rendering as json since the renderer could not be found or a render method was not specified.');
+            log.debug('Rendering as json since the renderer could not be found or a render method was not specified.');
             print(caramel.build(data));
         }
 

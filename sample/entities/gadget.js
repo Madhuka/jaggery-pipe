@@ -11,7 +11,7 @@ var Gadget=new entity.Schema('Gadget',{
 
 Gadget.methods.install=function(){
     var log=new Log();
-    log.info('Installing gadget');
+    log.debug('Installing gadget');
 };
 
 Gadget.plugin(require('/extensions/entity-plugins/entity-logger.js').entityPlugin);

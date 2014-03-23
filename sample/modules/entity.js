@@ -178,13 +178,13 @@ var entity = {};
      */
     var resolveDefaultValidations = function (fieldSchema) {
         if (fieldSchema.required) {
-            log.info('Adding required field validator');
+            log.debug('Adding required field validator');
             fieldSchema.validations.push({msg: 'Required field', validator: requiredFieldValidator});
         }
     };
 
     var requiredFieldValidator = function (fieldSchema, fieldValue) {
-        log.info('Checking required field');
+        log.debug('Checking required field');
         if ((!fieldValue) || (fieldValue == '')) {
             return false;
         }
@@ -277,12 +277,12 @@ var entity = {};
 
         schema.pre('save', function (entity, next) {
 
-            log.info('Performing validations');
+            log.debug('Performing validations');
 
             //Go through each field and invoke the validations
             for (var key in schema.props) {
 
-                log.info('Validating ' + key + '= ' + entity[key]);
+                log.debug('Validating ' + key + '= ' + entity[key]);
 
                 var validations = schema.props[key].validations;
 
@@ -304,8 +304,8 @@ var entity = {};
                 }
             }
             next();
-            log.info('Finished validating....');
-            log.info(errors);
+            log.debug('Finished validating....');
+            log.debug(errors);
         });
     };
 
@@ -456,12 +456,12 @@ var entity = {};
 
     var entityManager=new EntityManager();;
    /* if (!session.get('enManager')) {
-        log.info('Caching Entity Manager');
+        log.debug('Caching Entity Manager');
         entityManager = new EntityManager();
         session.put('enManager', entityManager);
     }
     else {
-        log.info('Using cached Entity Manager');
+        log.debug('Using cached Entity Manager');
         entityManager = session.get('enManager');
     } */
 

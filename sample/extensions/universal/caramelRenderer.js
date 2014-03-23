@@ -3,7 +3,7 @@ var render = function (viewId, data) {
 
     //Check if the user has provided both a view Id and data
     if (arguments.length <2) {
-        log.info('A view id and data must both be provided');
+        log.debug('A view id and data must both be provided');
         return;
     }
 

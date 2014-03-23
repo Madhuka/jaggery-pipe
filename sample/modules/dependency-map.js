@@ -43,13 +43,13 @@ var DependencyMap = {};
     };
 
     GenericDependencyMap.prototype.list = function (target) {
-        log.info('Listing dependencies for ' + target);
+        log.debug('Listing dependencies for ' + target);
         var dependency = this.get(target);
         var list = [];
 
 
         for (var index in dependency.dependants) {
-            log.info('Target: ' + target + ' depends on ' + dependency.dependants[index]);
+            log.debug('Target: ' + target + ' depends on ' + dependency.dependants[index]);
             recursiveRecord(dependency.dependants[index], this, list);
         }
 
@@ -59,8 +59,8 @@ var DependencyMap = {};
     GenericDependencyMap.prototype.invoke = function (target, cb) {
         var dependency = this.get(target);
 
-        log.info('Invoking ' + target);
-        log.info('******************');
+        log.debug('Invoking ' + target);
+        log.debug('******************');
 
         for (var index in dependency.dependants) {
 
@@ -84,7 +84,7 @@ var DependencyMap = {};
         }
 
         if (dependency.isResolved()) {
-            log.info('Dependency has already been resolved');
+            log.debug('Dependency has already been resolved');
             return;
         }
 
@@ -134,7 +134,7 @@ var DependencyMap = {};
 
             for (var index in dependency.dependants) {
                 dependant = dependency.dependants[index];
-                log.info('Recursive Target ' + target + ' depends on ' + dependant);
+                log.debug('Recursive Target ' + target + ' depends on ' + dependant);
                 recursiveRecord(dependant, dm, list);
             }
 

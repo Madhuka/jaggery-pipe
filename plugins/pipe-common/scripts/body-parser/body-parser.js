@@ -43,7 +43,7 @@ var bodyParser = (function () {
     };
 
     var handleMultiPartForm=function(req){
-        log.info(req.getAllParameters());
+        log.debug(req.getAllParameters());
         return {};
     };
 
@@ -56,7 +56,7 @@ var bodyParser = (function () {
         //Check for multipart/form-data content type
         //NOTE:We need to do this before calling getContent as it removes all form data
         if(contentType.indexOf('multipart/form-data')>=0){
-            log.info('A multi-part form');
+            log.debug('A multi-part form');
             req.body=req.getAllParameters();
             req.files=req.getAllFiles();
             handlers();

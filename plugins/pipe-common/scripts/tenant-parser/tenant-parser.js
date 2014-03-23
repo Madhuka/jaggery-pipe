@@ -31,7 +31,7 @@ var tenantParser=(function(){
             tenantId = SUPER_TENANT;
         }
 
-        log.info('Tenant ID is : '+tenantId);
+        log.debug('Tenant ID is : '+tenantId);
 
         session.put(PARAM_TENANT_ID,tenantId);
 

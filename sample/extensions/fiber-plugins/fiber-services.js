@@ -10,7 +10,7 @@ var fiberServices = function (fiber, options) {
         var serviceFiles = servicesDir.listFiles();
 
         for (var index in serviceFiles) {
-            log.info('Found the following services: ' + serviceFiles[index].getName());
+            log.debug('Found the following services: ' + serviceFiles[index].getName());
         }
 
     });

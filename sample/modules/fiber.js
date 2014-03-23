@@ -49,12 +49,12 @@ var module = (function () {
      * @param action The action to act on
      */
     EventMap.prototype.emit = function (target, action, context) {
-        log.info('Executing specific target and action event');
+        log.debug('Executing specific target and action event');
         executeEvents(target, action, context, this.map);
-        log.info('Executing ALL and action event');
+        log.debug('Executing ALL and action event');
         executeEvents(EVENT_ALL, action, context, this.map)
 
-        log.info('Executing ALL and ALL event');
+        log.debug('Executing ALL and ALL event');
         executeEvents(EVENT_ALL, EVENT_ALL, context, this.map);
     };
 
@@ -121,14 +121,14 @@ var module = (function () {
 
         processDependencyMap(extension, this.dependencyMap);
 
-        log.info(this.extensions);
-        log.info(this.dependencyMap.map);
+        log.debug(this.extensions);
+        log.debug(this.dependencyMap.map);
 
     };
 
     Fiber.prototype.list = function (extensionName) {
         var list = this.dependencyMap.list(extensionName);
-        log.info(stringify(list));
+        log.debug(stringify(list));
     };
 
     /**
@@ -140,7 +140,7 @@ var module = (function () {
         for (var index in this.extensions) {
             extension = this.extensions[index];
             this.dependencyMap.invoke(extension.name, function (item) {
-                log.info('Invoking main.js of ' + item.name);
+                log.debug('Invoking main.js of ' + item.name);
                 item.ref={};
             });
 
@@ -149,7 +149,7 @@ var module = (function () {
 
 
     var processDependencyMap = function (extension, dm) {
-        log.info('Registering extension')
+        log.debug('Registering extension')
         dm.add(extension.name, extension.consumes);
     };
 

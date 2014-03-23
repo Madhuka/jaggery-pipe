@@ -44,7 +44,7 @@ var deleteAsset = function (req,res) {
 };
 
 var postAsset = function (req,res) {
-    log.info(req.body);
+    log.debug(req.body);
     var data={
         id:1,
         name:'new '+req.params.type

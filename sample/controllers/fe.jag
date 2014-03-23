@@ -27,7 +27,7 @@ pipe.plug(router);
 pipe.plug(common.errHandler);
 
 
-log.info('env: '+common.errHandler.env());
+log.debug('env: '+common.errHandler.env());
 
 //Enable to allow routes to inherit from a parent route
 //router.app.config({inheritRoutes:true});
@@ -86,13 +86,13 @@ firstAsset.name='John';
 
 var secondAsset=new Asset({name:'Smith', type:'Gadget'});
 
-log.info(secondAsset.sayHello());
-log.info(firstAsset.sayHello());
+log.debug(secondAsset.sayHello());
+log.debug(firstAsset.sayHello());
 
 secondAsset.save();
-log.info(Asset.getAllTypes());
+log.debug(Asset.getAllTypes());
 
-log.info(firstAsset.path);
+log.debug(firstAsset.path);
 
 var Gadget=entity.model('Gadget');
 
@@ -114,11 +114,11 @@ var test4=Gadget.create();
 //var t=test();
 //t.name='Another Gadget';
 
-log.info(test1.toJSON());
-log.info(test2.toJSON());
-log.info(test3.toJSON());
-log.info(test4.toJSON());
-//log.info(firstAsset.logType);   */
+log.debug(test1.toJSON());
+log.debug(test2.toJSON());
+log.debug(test3.toJSON());
+log.debug(test4.toJSON());
+//log.debug(firstAsset.logType);   */
 
 var fiber=require('/modules/fiber.js').fiber;
 var fLogger=require('/extensions/fiber-plugins/fiber-logger.js').logger;

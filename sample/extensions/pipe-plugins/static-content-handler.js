@@ -26,7 +26,7 @@ var module = (function () {
 
 
         if (!file.isExists()) {
-            log.info('Could not locate the file!');
+            log.debug('Could not locate the file!');
             return false;
         }
 
@@ -36,7 +36,7 @@ var module = (function () {
             print(file.getStream());
         }
         catch (e) {
-            log.info('Unable to serve the file');
+            log.debug('Unable to serve the file');
         }
         finally {
             file.close();

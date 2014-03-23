@@ -13,7 +13,7 @@ var engine=caramel.engine('caramelViewEngine',caramelViewEngine);
 
 var resolve= function (path) {
     var log=new Log();
-    log.info('Path: '+this.__proto__.resolve.call(this, path));
+    log.debug('Path: '+this.__proto__.resolve.call(this, path));
     return this.__proto__.resolve.call(this, path);
 };
 
